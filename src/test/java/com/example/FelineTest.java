@@ -1,6 +1,12 @@
 package com.example;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +15,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 
+@RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
     @Test
@@ -27,13 +34,18 @@ public class FelineTest {
         assertEquals("The Family is Incorrect", excpectedFamily, actualFamily);
     }
 
+
+
+    @Spy
+    Feline feline;
+
     @Test
     public void eatMeatReturnCorrectValue() throws Exception {
-        Feline feline = new Feline();
         List<String> expectedFood = Arrays.asList("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actualFood = feline.eatMeat();
-        assertEquals("The Family is Incorrect", expectedFood, actualFood);
-    }
+        Assert.assertEquals(expectedFood, actualFood);
 
+    }
 
 }
