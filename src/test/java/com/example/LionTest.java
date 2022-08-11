@@ -1,7 +1,9 @@
 package com.example;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -42,12 +44,7 @@ public class LionTest {
     @Test(expected = Exception.class)
     public void testConstructorException() throws Exception {
         Feline feline = new Feline();
-        try {
-            Lion lion = new Lion(feline, "Неизвестен");
-        } catch (Exception excSex) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", excSex.getMessage());
-            throw excSex;
-        }
+        Lion lion = new Lion(feline, "Неизвестен");
     }
 
 

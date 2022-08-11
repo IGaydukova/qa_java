@@ -46,12 +46,7 @@ public class AnimalTest {
     @Test(expected = Exception.class)
     public void testConstructorException() throws Exception {
         Animal animal = new Animal();
-        try {
-            animal.getFood("Неизвестный вид");
-        } catch (Exception excSex) {
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", excSex.getMessage());
-            throw excSex;
-        }
+        animal.getFood("Неизвестный вид");
     }
 
 }
